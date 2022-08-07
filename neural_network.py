@@ -8,7 +8,7 @@ class NeuralNetwork:
         self.n_hidden_layer = n_hidden_layer
         self.n_output_layer = n_output_layer
         self.input_weights = np.random.uniform(low=-1, high=1, size=(self.n_hidden_layer, self.n_inputs)) #A row per neuron in the next hidden layer and a column per input node 
-        self.hidden_layers_weights = np.random.uniform(low=-1, high=1, size=(self.n_output_layer, self.n_hidden_layer)) #(1, 16)
+        self.hidden_layers_weights = np.random.uniform(low=-1, high=1, size=(self.n_output_layer, self.n_hidden_layer)) #(1, 3)
         self.bias_hidden = np.zeros((self.n_hidden_layer, 1))
         self.bias_out = np.zeros((self.n_output_layer, 1))
         self.hidden_layer_output = None
@@ -19,7 +19,7 @@ class NeuralNetwork:
         weighted_sum_1 = np.dot(self.input_weights, X) + self.bias_hidden 
         hidden_layer_output = self.sigmoid(weighted_sum_1) 
 
-        weighted_sum_2 = np.dot(self.hidden_layers_weights, hidden_layer_output) + self.bias_out # (1x16)*(16x1) = (1x1)
+        weighted_sum_2 = np.dot(self.hidden_layers_weights, hidden_layer_output) + self.bias_out # (1x3)*(3x1) = (1x1)
         output_layer_output = self.sigmoid(weighted_sum_2) 
         
         return output_layer_output
